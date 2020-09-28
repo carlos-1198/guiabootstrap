@@ -1,0 +1,45 @@
+<div class="row justify-content-md-center animated fadeIn">
+	<table id="dtBasicExample" class="table table-striped table-bordered" cellspacing="0" width="100%">
+		<thead>
+			<tr>
+				<th class="th-sm">Fecha
+				</th>
+				<th class="th-sm">Equipo Local
+				</th>
+				<th class="th-sm">Equipo Visitante
+				</th>
+			</tr>
+		</thead>
+		<tbody id="contenido">
+						
+		</tbody>
+		<tfoot>
+			<tr>
+				<th class="th-sm">Fecha
+				</th>
+				<th class="th-sm">Equipo Local
+				</th>
+				<th class="th-sm">Equipo Visitante
+				</th>
+			</tr>
+		</tfoot>
+	</table>
+</div>
+
+<script type="text/javascript">
+		var part = "";
+		$.getJSON('partidos.json', function(datos) {
+			$("#contenido").html('');
+			$.each(datos["partidos"], function(idx, partido) {
+				$("#contenido").append("<tr>" + "<td>" + partido["fecha"] + "</td><td>" + partido["equipo1"] + "</td><td>" + partido.equipo2 + "</td>" + "</tr>");
+			});
+		});
+
+	</script>
+<script type="text/javascript">
+		$(document).ready(function() {
+			$('#dtBasicExample').DataTable();
+			$('.dataTables_length').addClass('bs-select');
+		});
+
+	</script>
